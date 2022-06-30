@@ -135,8 +135,6 @@ const posts = [
 posts.forEach((element, index) => {
 
     const newContainer = createElement(element);
-    
-    console.log(index);
 
     parentWrapper(newContainer);
 });
@@ -144,11 +142,13 @@ posts.forEach((element, index) => {
 
 // * Milestone 2 * \\
     const likeButtons = document.querySelectorAll('a.like-button');
-    console.log(likeButtons);
 
-    for (let index = 0; index < likeButtons.length; index++) {
+    const likesCounter = document.querySelectorAll('.js-likes-counter');
+
+    for (let index = 0; ((index < likeButtons.length) && (index < likesCounter.length)); index++) {
         
         console.log(likeButtons[index]);
+        console.log(likesCounter[index]);
 
         likeButtons[index].addEventListener('click', function(){
 
@@ -156,10 +156,14 @@ posts.forEach((element, index) => {
 
             likeButtons[index].classList.add('like-button-active');
 
+            posts[index].likes++
+
+            likesCounter[index].innerHTML = posts[index].likes;
+            
+
         });
-
     }
-
+// * Milestone 2 * \\
 
 // ! FUNCTION ! \\
 function parentWrapper(element) {
