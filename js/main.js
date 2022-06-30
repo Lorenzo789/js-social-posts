@@ -131,14 +131,22 @@ const posts = [
 // Ragioniamo come sempre a step. Prima scriviamo nei commenti la logica in italiano e poi traduciamo in codice. console.log() è nostro amico.
 // Quando un pezzo di codice funziona, chiediamoci se possiamo scomporlo in funzioni più piccole.
 
-
-posts.forEach( (element, index) => {
+// * Milestone 1 * \\
+posts.forEach((element, index) => {
 
     const newContainer = createElement(element);
 
+    console.log(index);
+
+    const likeBtn = document.querySelector('.like-button, .js-like-button');
+
     parentWrapper(newContainer);
 });
+// * Milestone 1 * \\
 
+// * Milestone 2 * \\
+ const likeBtn = document.querySelector('.like-button, .js-like-button');
+ console.log(likeBtn);
 
 // ! FUNCTION ! \\
 function parentWrapper(element) {
@@ -154,12 +162,12 @@ function parentWrapper(element) {
 
 // ! FUNCTION ! \\
 function createElement(posts) {
-    
+
     const newElement = document.createElement('div');
 
     newElement.className = ('post');
 
-    newElement.innerHTML =`
+    newElement.innerHTML = `
     <div class="post__header">
         <div class="post-meta">
             <div class="post-meta__icon">
@@ -178,7 +186,7 @@ function createElement(posts) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button  js-like-button" href="#" data-postid="${posts.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -189,7 +197,8 @@ function createElement(posts) {
         </div>
     </div>`
 
-return newElement;
+
+    return newElement;
 
 }
 // ! FUNCTION ! \\
