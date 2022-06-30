@@ -132,6 +132,14 @@ const posts = [
 // Quando un pezzo di codice funziona, chiediamoci se possiamo scomporlo in funzioni più piccole.
 
 
+posts.forEach( (element, index) => {
+
+    const newContainer = createElement(element);
+
+    parentWrapper(newContainer);
+});
+
+
 // ! FUNCTION ! \\
 function parentWrapper(element) {
 
@@ -184,10 +192,4 @@ function createElement(posts) {
 return newElement;
 
 }
-
-posts.forEach( (element, index) => {
-
-    const newContainer = createElement(element);
-
-    parentWrapper(newContainer);
-});
+// ! FUNCTION ! \\
