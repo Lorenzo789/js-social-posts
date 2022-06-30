@@ -135,18 +135,31 @@ const posts = [
 posts.forEach((element, index) => {
 
     const newContainer = createElement(element);
-
+    
     console.log(index);
-
-    const likeBtn = document.querySelector('.like-button, .js-like-button');
 
     parentWrapper(newContainer);
 });
 // * Milestone 1 * \\
 
 // * Milestone 2 * \\
- const likeBtn = document.querySelector('.like-button, .js-like-button');
- console.log(likeBtn);
+    const likeButtons = document.querySelectorAll('a.like-button');
+    console.log(likeButtons);
+
+    for (let index = 0; index < likeButtons.length; index++) {
+        
+        console.log(likeButtons[index]);
+
+        likeButtons[index].addEventListener('click', function(){
+
+            console.log(index);
+
+            likeButtons[index].classList.add('like-button-active');
+
+        });
+
+    }
+
 
 // ! FUNCTION ! \\
 function parentWrapper(element) {
@@ -192,7 +205,7 @@ function createElement(posts) {
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                Piace a <b id="${posts.id}" class="js-likes-counter">${posts.likes}</b> persone
             </div>
         </div>
     </div>`
