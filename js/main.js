@@ -145,7 +145,7 @@ function parentWrapper(element) {
 // ! FUNCTION ! \\
 
 // ! FUNCTION ! \\
-function createElement(element) {
+function createElement(posts) {
     
     const newElement = document.createElement('element');
 
