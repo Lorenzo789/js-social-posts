@@ -155,11 +155,12 @@ posts.forEach((element, index) => {
             console.log(index);
 
             likeButtons[index].classList.add('like-button-active');
-
+            
+            // * BONUS 1 * \\
             posts[index].likes++
 
             likesCounter[index].innerHTML = posts[index].likes;
-            
+            // * BONUS 1 * \\
 
         });
     }
