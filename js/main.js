@@ -155,10 +155,11 @@ function parentWrapper(element) {
 // ! FUNCTION ! \\
 function createElement(posts) {
     
-    const newElement = document.createElement('element');
+    const newElement = document.createElement('div');
 
-    newElement.innerHTML =
-    `<div class="post">
+    newElement.className = ('post');
+
+    newElement.innerHTML =`
     <div class="post__header">
         <div class="post-meta">
             <div class="post-meta__icon">
@@ -186,8 +187,7 @@ function createElement(posts) {
                 Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
             </div>
         </div>
-    </div>
-</div>`
+    </div>`
 
 return newElement;
 
