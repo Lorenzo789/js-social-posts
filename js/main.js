@@ -141,26 +141,32 @@ posts.forEach((element, index) => {
 // * Milestone 1 * \\
 
 // * Milestone 2 * \\
-    const likeButtons = document.querySelectorAll('a.like-button');
+    let likeButtons = document.querySelectorAll('a.like-button');
 
-    const likesCounter = document.querySelectorAll('.js-likes-counter');
+    let likesCounter = document.querySelectorAll('.js-likes-counter');
 
     for (let index = 0; ((index < likeButtons.length) && (index < likesCounter.length)); index++) {
-        
-        console.log(likeButtons[index]);
-        console.log(likesCounter[index]);
 
         likeButtons[index].addEventListener('click', function(){
 
             console.log(index);
-
-            likeButtons[index].classList.add('like-button-active');
             
-            // * BONUS 1 * \\
-            posts[index].likes++
-
-            likesCounter[index].innerHTML = posts[index].likes;
-            // * BONUS 1 * \\
+            if (likeButtons[index].classList.contains('like-button--liked')) {
+                // * BONUS 2 * \\
+                likesCounter[index].innerHTML = --posts[index].likes
+                
+                likeButtons[index].classList.remove('like-button--liked');
+                // * BONUS 2 * \\
+            } else {
+                
+                likeButtons[index].classList.add('like-button--liked');
+                
+                // * BONUS 1 * \\
+                posts[index].likes++
+    
+                likesCounter[index].innerHTML = posts[index].likes;
+                // * BONUS 1 * \\
+            }
 
         });
     }
@@ -176,9 +182,7 @@ function parentWrapper(element) {
     return wrapper;
 
 }
-// ! FUNCTION ! \\
 
-// ! FUNCTION ! \\
 function createElement(posts) {
 
     const newElement = document.createElement('div');
@@ -189,11 +193,11 @@ function createElement(posts) {
     <div class="post__header">
         <div class="post-meta">
             <div class="post-meta__icon">
-                <img class="profile-pic" src="${posts.author.image}" alt="${posts.author.name}">
+                <img class="profile-pic" src="${posts.author.image}" alt="${nameProfilePicMissing(posts)}">
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${posts.author.name}</div>
-                <div class="post-meta__time">${posts.created}</div>
+                <div class="post-meta__time">${changeDate(posts.created)}</div>
             </div>
         </div>
     </div>
@@ -204,13 +208,13 @@ function createElement(posts) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="${posts.id}">
+                <a class="like-button  js-like-button" data-postid="${posts.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="${posts.id}" class="js-likes-counter">${posts.likes}</b> persone
+                Piace a <b id="like-counter${posts.id}" class="js-likes-counter">${posts.likes}</b> persone
             </div>
         </div>
     </div>`
@@ -218,5 +222,15 @@ function createElement(posts) {
 
     return newElement;
 
+}
+
+function changeDate(data){
+
+    return data.split('-').reverse().join('/')
+}
+
+function nameProfilePicMissing(posts) {
+
+    return firstLettersToOutput = posts.author.name.split(" ").slice(0,2).map(element => element[0]).join('');
 }
 // ! FUNCTION ! \\
